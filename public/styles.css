@@ -1,0 +1,204 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.body-container{
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.table-responsive{
+    width: 100%;
+    max-width: 98%;
+    margin: 0 auto;
+    overflow-x: scroll;
+    margin-top: 30px;
+}
+
+h1 {
+    background-color: #27849e;
+    color: #fff;
+    padding: 20px;
+    margin: 0;
+}
+#successMessage{
+display: none;
+}
+
+.dataTables_filter, .dataTables_length{
+    padding: 8px 20px;
+    background: #fff;
+    box-shadow: 0 0 3px #0000002e;
+    border-radius: 7px;
+}
+
+.dataTables_filter label, .dataTables_length label{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #000000c2;
+}
+
+.dataTables_filter label input{
+    border: none !important;
+    border-radius: 0 !important;
+    border-bottom: 1px solid !important;
+}
+
+table.dataTable {
+    margin-top: 26px !important;
+    float: left;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100% !important;
+    background-color: #fff;
+    margin: 20px auto;
+    border-radius: 5px;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+}
+
+table th {
+    background-color: #145e72;
+    color: #fff;
+    font-size: 14px;
+}
+
+table td {
+    background-color: #fff;
+    font-size: 14px;
+    border-bottom: 1px solid #00000012;
+}
+
+.dataTables_info{
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #000000e0;
+}
+
+.pagination {
+    margin: 20px auto;
+    text-align: center;
+}
+
+.pagination a {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    margin-right: 5px;
+    border-radius: 5px;
+}
+
+.pagination a:hover {
+    background-color: #555;
+}
+
+.dataTables_paginate {
+    padding-top: 1.25em !important;
+}
+
+.paginate_button.previous, .paginate_button.next{
+    font-size: 13px;
+}
+
+.paginate_button{
+    padding: 4px 10px !important;
+}
+
+.table-responsive .dataTables_paginate.paging_simple_numbers .paginate_button.current{
+    background: #27849e !important;
+    color: #fff !important;
+    border-color: #145e72 !important;
+}
+
+.main-table-st tr td:last-child{
+    display: flex;
+    gap: 10px;
+    max-width: max-content;
+}
+
+.main-table-st tr td:last-child button{
+    font-size: 13px;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    background: #d7d7d7;
+    cursor: pointer;
+}
+
+.single-table--wrap{
+    display: flex;
+    border-radius: 4px;
+    border: 1px solid #00000069;
+    padding: 10px;
+    gap: 30px;
+}
+
+.single-table-left p, .single-table-right p{ 
+    text-align: left;
+    font-size: 14px;
+    padding: 10px 15px;
+    font-weight: 600;
+    border-bottom: 1px solid #dadada;
+}
+
+.single-table-left p{ 
+    text-align: left;
+    font-size: 14px;
+    background: #145e72;
+    color: #fff;
+    
+    font-weight: 600;
+}
+
+.message.success{
+    width: fit-content;
+    background: #35891324;
+    margin: 10px;
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    top: 110px;
+    border: 1px solid #2e991a;
+    color: #2e991a;
+    font-weight: 600;
+}
+
+.achor-btn {
+    display: block;
+    width: 115px;
+    height: 25px;
+    background: #4E9CAF;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    line-height: 25px;
+    margin-top: 15px;
+}
+
+@media only screen and (max-width: 600px) {
+    .message.success {
+        background: #ffffff;
+        top: 20px;
+    }
+}

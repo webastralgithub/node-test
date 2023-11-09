@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Data Table</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.6/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+</head>
+
+<body>
+
+    <div class="body-container">
+    <h1>API Data Table</h1>
+    <div id="successMessage" class="message success">
+        Revert successful!
+    </div>
+
+    <div class="table-responsive">
+        <table id="myTable" class="main-table-st">
+            <!-- Table header goes here -->
+            <thead>
+                <tr>
+                    <th>Event Date</th>
+                    <th>Event Name</th>
+                    <th>Profit</th>
+                    <th>Purchased</th>
+                    <th>Quantity</th>
+                    <th>Row</th>
+                    <th>Section</th>
+                    <th>Total</th>
+                    <th>Total Cost</th>
+                    <th>Updated By</th>
+                    <th>Venue</th>
+                    <th>Action</th>
+                    <!-- Add more columns as needed -->
+                </tr>
+            </thead>
+            <!-- Table body goes here -->
+            <tbody>
+        
+            </tbody>
+        </table>
+    </div>
+    </div>
+ 
+    <script>
+        function purchase(id) {
+            const updated_by = "webDEv"; // Change to your name or use an input field
+            const url = `/purchase/${id}`;
+
+            fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ id, updated_by }), // Ensure 'updated_by' is included
+            })
+                .then(response => response.json())
+                .then(data => {
+                    // Handle the response, you can update the UI here if needed
+                    showSuccessMessage('Lead is Purchased successfuly');
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        }
+
+        function revert(id) {
+            const url = `/revert/${id}`;
+
+            fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ id }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    // Handle the response, you can update the UI here if needed
+                    showSuccessMessage('Lead is reverted successfuly');
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        }
+        function view(id) {
+            // Redirect to a new route to view details for the selected row
+            window.location.href = `/view/${id}`;
+        }
+
+        function showSuccessMessage(message = '') {
+            const successMessage = document.getElementById("successMessage");
+            successMessage.innerText = message; 
+            successMessage.style.display = "block"; // Show the message
+            setTimeout(function () {
+                successMessage.style.display = "none"; // Hide the message after a few seconds
+            }, 3000); // Adjust the duration as needed (3 seconds in this case)
+        }
+        $(document).ready(function () {
+        $('#myTable').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: {
+                url: '/getApiData', // The URL to fetch data from
+                type: 'GET', // Use GET method to fetch data
+                dataSrc: 'data', // The key that contains the data array in the response
+            },
+            columns: [
+                { data: 'event_date' },
+                { data: 'event_name' },
+                { data: 'profit' },
+                { data: 'purchased' },
+                { data: 'quantity' },
+                { data: 'row' },
+                { data: 'section' },
+                { data: 'total' },
+                { data: 'total_cost' },
+                { data: 'updated_by' },
+                { data: 'venue' },
+                { data: null, render: function (data, type, row) {
+                    return '<button onclick="purchase(' + row.id + ')">Purchase</button>' +
+                        '<button onclick="revert(' + row.id + ')">Revert</button>' +
+                        '<button onclick="view(' + row.id + ')">View</button>';
+                } }
+            ],
+            searching: true, // Enable search bar
+            paging: true, // Enable pagination
+        });
+    });
+    </script>
+</body>
+
+</html>

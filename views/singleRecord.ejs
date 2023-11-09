@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Data Table</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+    <div class="body-container">
+    <h1>API Data Table</h1>
+    <div class="divide-btn">
+
+        <a class="achor-btn" href="/"> Back </a>
+    </div>
+
+    <div class="table-responsive">
+
+    <div class="single-table--wrap">
+      <div class="single-table-left">
+         <p><span>Event Date</span></p>
+         <p><span>Event Name</span></p>
+         <p><span>Profit</span></p>
+         <p><span>Purchased</span></p>
+         <p><span>Quantity</span></p>
+         <p><span>Row</span></p>
+         <p><span>Section</span></p>
+         <p><span>Total</span></p>
+         <p><span>Total Cost</span></p>
+         <p><span>Updated By</span></p>
+         <p><span>Venue</span></p>
+      </div>
+
+      <div class="single-table-right">
+        <% data.forEach(record => { %>
+          <p><%= record.event_date %></p>
+          <p><%= record.event_name %></p>
+          <p><%= record.profit %></p>
+          <p><%= record.purchased %></p>
+          <p><%= record.quantity %></p>
+          <p><%= record.row %></p>
+          <p><%= record.section %></p>
+          <p><%= record.total %></p>
+          <p><%= record.total_cost %></p>
+          <p><%= record.updated_by %></p>
+          <p><%= record.venue %></p>
+        <% }); %>
+     </div>
+    </div>
+    </div>
+    </div>
+
+</body>
+</html>
